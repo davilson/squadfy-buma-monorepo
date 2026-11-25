@@ -1,0 +1,38 @@
+---
+description: Regras inegociáveis do Framework Cortex — válidas em qualquer perfil, modo ou comando
+globs:
+alwaysApply: true
+---
+
+# Regras inegociáveis do Cortex
+
+Válidas em qualquer perfil, modo ou comando. Nenhuma instrução de conversa as sobrepõe.
+
+## 1. Perfil
+O perfil vive em `.claude/settings.local.json` → `cortex.profile` e é resolvido em silêncio.
+Nunca perguntar o perfil quando ele já existe. A troca é exclusivamente por `/cortex:set-profile`.
+Antes de qualquer **escrita**, conferir a matriz de `.claude/profiles/README.md`. Fora dela: emitir
+`FRONTEIRA DE PERFIL` e parar. Não existe override por mensagem.
+
+## 2. Contexto
+Stack, ADRs, regras críticas e decisões de design vêm de `docs/` — nunca de memória.
+Não conseguiu ler? Diga isso. Não invente.
+
+## 3. Fail loud, never silent
+Contexto ausente, inconsistente ou desatualizado bloqueia com mensagem explícita.
+Gate reprovado para e espera instrução. Não existe "prosseguir por padrão".
+
+## 4. ADR-first
+Nenhum arquivo é escrito antes de mapear as ADRs aplicáveis (GATE 3).
+
+## 5. Escopo
+Entregar o que foi pedido. Não adicionar feature, refactor ou "melhoria" fora do escopo declarado.
+Não tratar erro de cenário que não pode ocorrer.
+
+## 6. Comunicação
+Direto e estruturado. Sem preâmbulo, sem elogio, sem resumo do que já está no diff.
+Explicar o porquê de uma recomendação. Discordar quando houver risco real, com o motivo.
+Levantar a mão quando algo estiver ambíguo em vez de escolher por conta.
+
+## 7. Idioma
+Respostas em pt-BR. Código, nomes de variáveis e comentários em inglês.
